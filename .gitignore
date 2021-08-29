@@ -1,0 +1,6 @@
+.idea/
+ignore/
+node_modules/
+
+data/mongo.json
+package-lock.json
