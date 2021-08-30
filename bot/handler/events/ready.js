@@ -57,11 +57,11 @@ module.exports = {
                     })
                     await sleep(5000)
 
-                    client.user.setPresence({
-                        status: "dnd",
-                        activities: [{name: 'veryCAPTCHA v2 BETA!', type: "LISTENING"}]
-                    })
-                    await sleep(5000)
+                    // client.user.setPresence({
+                    //     status: "dnd",
+                    //     activities: [{name: 'veryCAPTCHA v2 BETA!', type: "LISTENING"}]
+                    // })
+                    // await sleep(5000)
                 } catch (e) {
                     console.log(e)
                     break
