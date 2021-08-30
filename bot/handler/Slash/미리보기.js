@@ -1,7 +1,6 @@
 const { SlashCommandBuilder } = require('@discordjs/builders')
 const Discord = require('discord.js')
 const { Permissions } = require('discord.js')
-const data = require("../../captchaData")
 
 const config = require("../../../data/config.json")
 
@@ -9,23 +8,8 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName('미리보기')
         .setDescription('설정한 정보를 가져옵니다.'),
-    async execute(interaction) {
+    async execute(interaction, gData) {
         if (interaction.member.permissions.has(Permissions.FLAGS.ADMINISTRATOR)) {
-            const getGuildID = interaction.guild.id
-
-            let gData
-            try {
-                gData = await data.findOne({ guildID: getGuildID })
-                if (!gData) {
-                    let gDataN = await data.create({
-                        guildID: getGuildID
-                    })
-                    await gDataN.save()
-                }
-            } catch (e) {
-                console.log(e)
-            }
-
             const c = new Discord.MessageActionRow()
                 .addComponents(
                     new Discord.MessageButton()

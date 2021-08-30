@@ -20,23 +20,10 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName('생성')
         .setDescription('인증하기 위한 Embed를 해당 명령어를 입력한 채널에 생성 합니다'),
-    async execute(interaction) {
+    async execute(interaction, gData) {
         if (interaction.member.permissions.has(Permissions.FLAGS.ADMINISTRATOR)) {
             const getGuildID = interaction.guild.id
             const random = randomString(12)
-
-            let gData
-            try {
-                gData = await data.findOne({ guildID: getGuildID })
-                if (!gData) {
-                    let gDataN = await data.create({
-                        guildID: getGuildID
-                    })
-                    await gDataN.save()
-                }
-            } catch (e) {
-                console.log(e)
-            }
 
             const c = new Discord.MessageActionRow()
                 .addComponents(
