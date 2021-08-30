@@ -47,9 +47,9 @@ module.exports = {
                 }
             }
             if (interaction.customId === gData.customId) {
-                if (duringVerify.indexOf(interaction.member.id)) {
+                if (!duringVerify.includes(`${interaction.guild.id}:${interaction.member.id}`)) {
 
-                    duringVerify.push(interaction.member.id)
+                    duringVerify.push(`${interaction.guild.id}:${interaction.member.id}`)
                     const random = randomString(12)
                     let count = 1
                     try {
@@ -64,7 +64,7 @@ module.exports = {
                                 if (gData.verifyStyle === "v1") {
                                     const verify = new Discord.MessageEmbed()
                                     verify.setColor("GREEN")
-                                        .setAuthor(gData.embedTitle)
+                                        .setAuthor(`${gData.embedTitle} [서버 : ${interaction.guild.name}]`)
                                         .addField("내용", `${gData.embedField}`, false)
                                         .addField("보안코드를 대소문자 구별하여 입력해주세요! (제한시간 : 60초)", `\`${random}\``)
                                         .setTimestamp()
@@ -87,13 +87,13 @@ module.exports = {
                                     })
                                     collector.on('end', async (collected, reason) => {
                                         if (reason === "time") {
-                                            const del = duringVerify.indexOf(interaction.member.id)
+                                            const del = duringVerify.indexOf(`${interaction.guild.id}:${interaction.member.id}`)
                                             duringVerify.splice(del, 1)
                                             await interaction.member.send({content: "시간초과로 인증이 취소되었습니다! 다시 시도해주세요!"}).then(msg => {
                                                 setTimeout(() => msg.delete(), 5000)
                                             })
                                         } else if (reason === "limit") {
-                                            const del = duringVerify.indexOf(interaction.member.id)
+                                            const del = duringVerify.indexOf(`${interaction.guild.id}:${interaction.member.id}`)
                                             duringVerify.splice(del, 1)
                                             await interaction.member.send({content: "❌ 캡챠 인증을 3번 중 '3' 번을 틀려서 인증이 취소되었습니다. 다시 시도해 주세요!"}).then(msg => {
                                                 setTimeout(() => msg.delete(), 5000)
@@ -110,7 +110,7 @@ module.exports = {
                                                     verifiedUser: interaction.member.id
                                                 }
                                             })
-                                            const del = duringVerify.indexOf(interaction.member.id)
+                                            const del = duringVerify.indexOf(`${interaction.guild.id}:${interaction.member.id}`)
                                             duringVerify.splice(del, 1)
                                             await interaction.member.send({content: "인증이 완료되었습니다!"}).then(msg => {
                                                 setTimeout(() => msg.delete(), 5000)
@@ -121,14 +121,14 @@ module.exports = {
 
                                 await interaction.reply({content: "<a:Check_Mark:857300578383822868> 인증 메시지를 보냈습니다\n\n`DM을 확인해 주시기 바랍니다!`", ephemeral: true})
                             } catch (e) {
-                                const del = duringVerify.indexOf(interaction.member.id)
+                                const del = duringVerify.indexOf(`${interaction.guild.id}:${interaction.member.id}`)
                                 duringVerify.splice(del, 1)
 
                                 await interaction.reply({content: `인증을 완료할 수 없습니다\n오류 : ${e}`, ephemeral: true})
                             }
                         }
                     } catch (e) {
-                        const del = duringVerify.indexOf(interaction.member.id)
+                        const del = duringVerify.indexOf(`${interaction.guild.id}:${interaction.member.id}`)
                         duringVerify.splice(del, 1)
 
                         await interaction.reply({content: "정보를 가져올 수 없습니다.", ephemeral: true})
