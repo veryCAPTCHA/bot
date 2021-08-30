@@ -53,7 +53,7 @@ module.exports = {
                     const random = randomString(12)
                     let count = 1
                     try {
-                        if (!gData.verifiedUser.indexOf(interaction.member.id)) {
+                        if (gData.verifiedUser.includes(interaction.member.id)) {
                             const del = duringVerify.indexOf(interaction.member.id)
                             duringVerify.splice(del, 1)
 
