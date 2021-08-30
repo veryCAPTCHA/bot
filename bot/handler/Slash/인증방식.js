@@ -34,6 +34,7 @@ module.exports = {
                     new Discord.MessageSelectMenu()
                         .setCustomId('verifyStyle')
                         .setPlaceholder('옵션을 선택해 주세요!')
+                        .setDisabled(true)
                         .addOptions([
                             {
                                 label: 'v1',

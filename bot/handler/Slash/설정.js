@@ -44,7 +44,7 @@ module.exports = {
             try {
                 const settings = new Discord.MessageEmbed()
                 settings.setColor("RANDOM")
-                    .setTitle("<a:Check_Mark:857300578383822868> 설정 완료!")
+                    .setTitle("<a:Check_Mark:857300578383822868> 설정이 완료되었습니다!")
 
                     .addField("제목", interaction.options.get("제목").value)
                     .addField("설명", interaction.options.get("설명").value.toString().replaceAll('\\n', '\n'))

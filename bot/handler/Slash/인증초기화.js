@@ -11,7 +11,7 @@ module.exports = {
         if (interaction.member.permissions.has(Permissions.FLAGS.ADMINISTRATOR)) {
             const getGuildID = interaction.guild.id
 
-            if (!interaction.options.get("확인").value) {
+            if (!interaction.options.get("확인")) {
                 await data.findOneAndUpdate({guildID: getGuildID}, {
                     $set: {
                         verifiedUser: []
