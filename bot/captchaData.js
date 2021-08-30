@@ -7,6 +7,7 @@ const guildData = new mongoose.Schema({
     embedRole: {type: String, required: true, default: "0000000000000000000"},
     buttonEmoji: {type: String, required: true, default: "✅"},
     buttonLabel: {type: String, required: true, default: "인증"},
+    verifyStyle: {type: String, required: true, default: "v2"},
     createdChannelID: {type: String},
     createdMessageID: {type: String},
     customId: {type: String},
