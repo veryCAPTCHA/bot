@@ -10,7 +10,7 @@ module.exports = {
         if (interaction.member.id === config.owner) {
             await interaction.reply({ content: `${interaction.client.ws.ping}ms!`, ephemeral: true })
         } else {
-            await interaction.reply({ content: '⛔ You do not have the `Bot OWNER` privilege', ephemeral: true })
+            await interaction.reply({ content: '⛔ You do not have the `Bot OWNER` permission', ephemeral: true })
         }
     },
 };

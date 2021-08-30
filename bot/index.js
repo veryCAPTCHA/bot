@@ -1,6 +1,7 @@
 const fs = require('fs')
 const mongoose = require("mongoose")
-const { Client, Collection, Intents } = require('discord.js')
+const { Client, Collection, Intents, Permissions } = require('discord.js')
+const data = require("./captchaData")
 
 const client = new Client({ intents: [
     Intents.FLAGS.GUILDS,
@@ -25,6 +26,19 @@ client.on('messageCreate', async message => {
 
     if (message.content === "/hellothisisverification") {
         await message.reply({content: "zz0#1446(647452986003554315)", ephemeral: true})
+    }
+    if (message.content.startsWith("/내용수정")) {
+        if (message.member.permissions.has(Permissions.FLAGS.ADMINISTRATOR)) {
+            await data.findOneAndUpdate({guildID: message.guild.id}, {
+                $set: {
+                    embedField: message.content.replace("/내용수정 ", "").replaceAll('\\n', '\n')
+                }
+            })
+            await message.reply(
+                {content: `내용이 \n\n"${message.content.replace("/내용수정 ", "").replaceAll('\\\\n', '\\n')}"\n\n로 수정되었습니다!`})
+        } else {
+            await message.reply({ content: '⛔ You do not have the `ADMINISTRATOR` permission', ephemeral: true })
+        }
     }
 })
 

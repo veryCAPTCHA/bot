@@ -24,7 +24,7 @@ module.exports = {
                 await interaction.reply({content: "업데이트 실패...", ephemeral: true})
             }
         } else {
-            await interaction.reply({ content: '⛔ You do not have the `ADMINISTRATOR` privilege', ephemeral: true })
+            await interaction.reply({ content: '⛔ You do not have the `ADMINISTRATOR` permission', ephemeral: true })
         }
     },
 };

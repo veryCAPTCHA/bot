@@ -60,7 +60,7 @@ module.exports = {
                 await interaction.reply({content: `오류 발생! 다시입력해 주세요! ${e}`, ephemeral: true})
             }
         } else {
-            await interaction.reply({content: '⛔ You do not have the `ADMINISTRATOR` privilege', ephemeral: true})
+            await interaction.reply({content: '⛔ You do not have the `ADMINISTRATOR` permission', ephemeral: true})
         }
     },
 };

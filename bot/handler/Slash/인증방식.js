@@ -59,7 +59,7 @@ module.exports = {
                 .setFooter(`개발자 : ${interaction.client.users.cache.find(user => user.id === config.owner).tag}`)
             await interaction.reply({embeds: [verifyStyle], ephemeral: true, components: [select]})
         } else {
-            await interaction.reply({ content: '⛔ You do not have the `ADMINISTRATOR` privilege', ephemeral: true })
+            await interaction.reply({ content: '⛔ You do not have the `ADMINISTRATOR` permission', ephemeral: true })
         }
     },
 };
