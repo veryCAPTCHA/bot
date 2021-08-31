@@ -53,8 +53,6 @@ module.exports = {
             const verifyStyle = new Discord.MessageEmbed()
             verifyStyle.setColor("RANDOM")
                 .setTitle("인증 방식을 설정해 주세요!")
-
-
                 .setTimestamp()
                 .setFooter(`개발자 : ${interaction.client.users.cache.find(user => user.id === config.owner).tag}`)
             await interaction.reply({embeds: [verifyStyle], ephemeral: true, components: [select]})

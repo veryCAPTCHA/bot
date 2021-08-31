@@ -18,7 +18,7 @@ const rest = new REST({ version: '9' }).setToken(config.token);
 (async () => {
     try {
         await rest.put(
-            Routes.applicationGuildCommands("881476730001457172", "754664289708802080"),
+            Routes.applicationGuildCommands("859253614295646288", "754664289708802080"),
             { body: commands },
         );
 
