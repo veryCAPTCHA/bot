@@ -8,12 +8,12 @@ module.exports = {
     execute(client) {
         // SlashCommand Update
         const commands = [];
-        const commandFiles = fs.readdirSync(`${process.cwd()}/bot/handler/Slash`).filter(file => file.endsWith('.js'));
-
-        for (const file of commandFiles) {
-            const command = require(`${process.cwd()}/bot/handler/Slash/${file}`);
-            commands.push(command.data.toJSON());
-        }
+        // const commandFiles = fs.readdirSync(`${process.cwd()}/bot/handler/Slash`).filter(file => file.endsWith('.js'));
+        //
+        // for (const file of commandFiles) {
+        //     const command = require(`${process.cwd()}/bot/handler/Slash/${file}`);
+        //     commands.push(command.data.toJSON());
+        // }
 
         const rest = new REST({version: '9'}).setToken(config.token);
 
@@ -24,7 +24,7 @@ module.exports = {
                     {body: commands},
                 )
 
-                console.log('Successfully registered application commands.');
+                // console.log('Successfully registered application commands.');
             } catch (error) {
                 console.error(error);
             }
