@@ -1,6 +1,6 @@
 {
   "name": "verycaptcha_v2",
-  "version": "1.0.1",
+  "version": "1.0.2-dev",
   "description": "veryCAPTCHA v1 후속 버전",
   "main": "index.js",
   "scripts": {
