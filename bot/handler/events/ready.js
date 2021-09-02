@@ -1,6 +1,8 @@
 const {commandFiles} = require("../../index")
 const config = require('../../../data/config.json')
 
+const Discord = require('discord.js')
+
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -18,7 +20,7 @@ module.exports = {
         console.log(`${client.guilds.cache.size}개의 서버에서 봇이 동작중입니다.`)
         console.log('------')
         console.log(`Node.js 버전 : ${process.version} |권장 : 16.8.0|`)
-        console.log(`Discord.js 버전 : ${undefined} |권장 : 13.1.0|`)
+        console.log(`Discord.js 버전 : ${Discord.version} |권장 : 13.1.0|`)
         console.log(`[${client.user.tag}] 버전 : ${require("../../../package.json").version}`)
         console.log('------')
         for (const cmd of commandFiles) {
