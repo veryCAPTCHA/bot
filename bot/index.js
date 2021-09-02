@@ -35,7 +35,7 @@ client.on('messageCreate', async message => {
                 }
             })
             await message.reply(
-                {content: `내용이 \n\n"${message.content.replace("/내용수정 ", "").replaceAll('\\\\n', '\\n')}"\n\n로 수정되었습니다!`})
+                {content: `내용이 \n\n"${message.content.replace("/내용수정 ", "").replaceAll('\\n', '\n')}"\n\n로 수정되었습니다!`})
         } else {
             await message.reply({content: '⛔ You do not have the `ADMINISTRATOR` permission', ephemeral: true})
         }
