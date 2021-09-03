@@ -73,11 +73,11 @@ module.exports = {
                                 .addField("내용",
                                     `${contents}
                             
-                                              -----
-                                              서포트 서버 : [바로가기](https://discord.gg/cVu6rmc)
-                                              봇 초대하기 : [바로가기](https://discord.com/api/oauth2/authorize?client_id=881476730001457172&permissions=141130320976&scope=bot%20applications.commands)
-                                              -----
-                                              해당 채널에서 봇 공지를 받고 싶지 않으시다면 '/채널설정 #채널' (으)로 설정해 주세요`)
+                                    -----
+                                    서포트 서버 : [바로가기](https://discord.gg/cVu6rmc)
+                                    봇 초대하기 : [바로가기](https://discord.com/api/oauth2/authorize?client_id=881476730001457172&permissions=141130320976&scope=bot%20applications.commands)
+                                    -----
+                                    해당 채널에서 봇 공지를 받고 싶지 않으시다면 '/채널설정 #채널' (으)로 설정해 주세요`)
                                 .setTimestamp()
                                 .setFooter(`작성자 : ${message.author.tag} | 개발자 : ${message.client.users.cache.find(user => user.id === config.owner).tag}`, avatarURL)
 
