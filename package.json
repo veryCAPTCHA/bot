@@ -1,7 +1,7 @@
 {
   "name": "verycaptcha_v2",
   "version": "1.0.7-dev",
-  "description": "veryCAPTCHA v1 후속 버전",
+  "description": "Simple Discord Captcha Bot",
   "main": "index.js",
   "scripts": {
     "run": "node ./bot/index.js",
@@ -12,10 +12,12 @@
   "dependencies": {
     "@discordjs/builders": "^0.6.0",
     "@discordjs/rest": "^0.1.0-canary.0",
+    "canvas": "^2.8.0",
     "discord-api-types": "^0.22.0",
     "discord.js": "^13.1.0",
     "dokdo": "^0.5.0",
     "glob": "^7.1.7",
+    "lodash": "^4.17.21",
     "mongoose": "^6.0.2"
   }
 }
