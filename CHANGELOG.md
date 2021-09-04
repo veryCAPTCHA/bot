@@ -12,7 +12,7 @@
 
 ### 1.0.3
 
-* PR : `1.0.2-dev` (master <- dev) [#1](https://github.com/Kill00/veryCAPTCHA/pull/1)
+* PR : [1.0.2-dev](https://github.com/Kill00/veryCAPTCHA/blob/dev/CHANGELOG.md#102-dev) (master <- dev) [#1](https://github.com/Kill00/veryCAPTCHA/pull/1)
 
 ---
 
@@ -20,6 +20,8 @@
 
 * `discord.js` 버전을 체크 하도록 수정
 * 봇 공지 기능 버그 수정
+
+---
 
 ### 1.0.1
 
