@@ -1,23 +1,24 @@
-const { Canvas } = require('canvas')
+const { Canvas, registerFont } = require('canvas')
 const { shuffle } = require("lodash")
+registerFont('./data/font.ttf', { family: 'CustomFont' })
 
 module.exports.createImg = async function createImg(i) {
     const canvas = new Canvas(400, 250);
-    const ctx = canvas.getContext("2d");
+    const cv = canvas.getContext("2d");
 
     // Set background color
-    ctx.globalAlpha = 1;
-    ctx.fillStyle = "white";
-    ctx.beginPath();
-    ctx.fillRect(0, 0, 400, 250);
-    ctx.save();
+    cv.globalAlpha = 1;
+    cv.fillStyle = "white";
+    cv.beginPath();
+    cv.fillRect(0, 0, 400, 250);
+    cv.save();
 
     // Set style for lines
-    ctx.strokeStyle = "#000";
-    ctx.lineWidth = 4;
+    cv.strokeStyle = "#000";
+    cv.lineWidth = 4;
 
     // Draw lines
-    ctx.beginPath();
+    cv.beginPath();
 
     const coords = [];
 
@@ -34,40 +35,40 @@ module.exports.createImg = async function createImg(i) {
         if (!(i % 2)) {
             for (let j = 0; j < coords[i].length; j++) {
                 if (!i) {
-                    ctx.moveTo(coords[i][j], 0);
-                    ctx.lineTo(coords[i + 1][j], 400);
+                    cv.moveTo(coords[i][j], 0);
+                    cv.lineTo(coords[i + 1][j], 400);
                 }
                 else {
-                    ctx.moveTo(0, coords[i][j]);
-                    ctx.lineTo(400, coords[i + 1][j]);
+                    cv.moveTo(0, coords[i][j]);
+                    cv.lineTo(400, coords[i + 1][j]);
                 }
             }
         }
     }
 
-    ctx.stroke();
+    cv.stroke();
 
     // Set style for text
-    ctx.font = "80px Sans";
-    ctx.fillStyle = "#000";
+    cv.font = "80px CustomFont";
+    cv.fillStyle = "#000";
 
     // Set position for text
-    ctx.textAlign = "center";
-    ctx.textBaseline = "top";
-    ctx.translate(-50, 220);
-    ctx.translate(Math.round(Math.random() * 100 - 50) + 250, -1 * Math.round(Math.random() * (250 / 4) - 250 / 8) - 250 / 2);
-    ctx.rotate(Math.random() - 0.5);
+    cv.textAlign = "center";
+    cv.textBaseline = "top";
+    cv.translate(-50, 220);
+    cv.translate(Math.round(Math.random() * 100 - 50) + 250, -1 * Math.round(Math.random() * (250 / 4) - 250 / 8) - 250 / 2);
+    cv.rotate(Math.random() - 0.5);
 
     // Set text value and print it to canvas
-    ctx.beginPath();
-    ctx.fillText(i, 0, 0);
+    cv.beginPath();
+    cv.fillText(i, 0, 0);
 
     // Draw foreground noise
-    ctx.restore();
+    cv.restore();
 
     for (let i = 0; i < 1000; i++) {
 
-        ctx.beginPath();
+        cv.beginPath();
 
         let color = "#";
         while (color.length < 7) {
@@ -75,9 +76,9 @@ module.exports.createImg = async function createImg(i) {
         }
 
         color += "a0";
-        ctx.fillStyle = color;
-        ctx.arc(Math.round(Math.random() * 400), Math.round(Math.random() * 250), Math.random() * 2, 0, Math.PI * 2);
-        ctx.fill();
+        cv.fillStyle = color;
+        cv.arc(Math.round(Math.random() * 400), Math.round(Math.random() * 250), Math.random() * 2, 0, Math.PI * 2);
+        cv.fill();
     }
 
     return {

@@ -1,6 +1,6 @@
 {
   "name": "verycaptcha_v2",
-  "version": "1.0.7-dev",
+  "version": "1.0.8-dev",
   "description": "Simple Discord Captcha Bot",
   "main": "index.js",
   "scripts": {
