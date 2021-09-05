@@ -3,6 +3,8 @@ const Discord = require("discord.js")
 
 const config = require('../../../data/config.json')
 
+const captchaImg = require('../../captchaImage')
+
 let duringVerify = []
 
 function randomString(length) {
@@ -46,11 +48,11 @@ module.exports = {
                     await interaction.reply({content: "정보를 가져올 수 없습니다.", ephemeral: true})
                 }
             }
+
             if (interaction.customId === gData.customId) {
                 if (!duringVerify.includes(`${interaction.guild.id}:${interaction.member.id}`)) {
 
                     duringVerify.push(`${interaction.guild.id}:${interaction.member.id}`)
-                    const random = randomString(12)
                     let count = 1
                     try {
                         if (gData.verifiedUser.includes(interaction.member.id)) {
@@ -61,7 +63,10 @@ module.exports = {
                         } else {
 
                             try {
+                                let vMsg
+                                let random
                                 if (gData.verifyStyle === "v1") {
+                                    random = randomString(12)
                                     const verify = new Discord.MessageEmbed()
                                     verify.setColor("GREEN")
                                         .setAuthor(`${gData.embedTitle} [서버 : ${interaction.guild.name}]`)
@@ -69,7 +74,19 @@ module.exports = {
                                         .addField("보안코드를 대소문자 구별하여 입력해주세요! (제한시간 : 60초)", `\`${random}\``)
                                         .setTimestamp()
                                         .setFooter(`개발자 : ${interaction.client.users.cache.find(user => user.id === config.owner).tag}`)
-                                    let vMsg = await interaction.member.send({embeds: [verify]})
+                                    vMsg = await interaction.member.send({embeds: [verify]})
+                                } else if (gData.verifyStyle === "v2") {
+                                    random = randomString(6)
+                                    const captcha = await captchaImg.createImg(random).catch(e => { return console.log(e) })
+                                    const verify = new Discord.MessageEmbed()
+                                    verify.setColor("GREEN")
+                                        .setAuthor(`${gData.embedTitle} [서버 : ${interaction.guild.name}]`)
+                                        .addField("내용", `${gData.embedField} \n\n\`\`\`diff\n+ 보안코드를 대소문자 구별하여 입력해주세요!\n- (제한시간 : 60초)\`\`\``, false)
+                                        .setImage('attachment://captcha.png')
+                                        .setTimestamp()
+                                        .setFooter(`개발자 : ${interaction.client.users.cache.find(user => user.id === config.owner).tag}`)
+                                    vMsg = await interaction.member.send({embeds: [verify], files: [{name: "captcha.png", attachment: captcha.image}]})
+                                }
 
                                     const collector = new Discord.MessageCollector(await vMsg.channel, {
                                         max: 3,
@@ -117,7 +134,6 @@ module.exports = {
                                             })
                                         }
                                     })
-                                }
 
                                 await interaction.reply({content: "<a:Check_Mark:857300578383822868> 인증 메시지를 보냈습니다\n\n`DM을 확인해 주시기 바랍니다!`", ephemeral: true})
                             } catch (e) {
