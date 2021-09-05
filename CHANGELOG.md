@@ -1,3 +1,9 @@
+### 1.0.8 (v2)
+
+* PR : (master <- dev) [#2](https://github.com/Kill00/veryCAPTCHA/pull/2)
+
+---
+
 ### 1.0.8-dev (v2)
 
 * 커스텀 폰트 기능 추가
@@ -12,7 +18,7 @@
 
 ### 1.0.3 (v2)
 
-* PR : [1.0.2-dev](https://github.com/Kill00/veryCAPTCHA/blob/dev/CHANGELOG.md#102-dev) (master <- dev) [#1](https://github.com/Kill00/veryCAPTCHA/pull/1)
+* PR : (master <- dev) [#1](https://github.com/Kill00/veryCAPTCHA/pull/1)
 
 ---
 
