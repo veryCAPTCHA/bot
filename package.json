@@ -4,8 +4,7 @@
   "description": "Simple Discord Captcha Bot",
   "main": "index.js",
   "scripts": {
-    "run": "node ./bot/index.js",
-    "update": "node ./bot/handler/slashSupport.js"
+    "bot": "node ./bot/index.js"
   },
   "author": "Kill00",
   "license": "GPL-3.0",
