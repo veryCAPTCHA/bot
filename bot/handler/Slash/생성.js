@@ -19,7 +19,7 @@ function randomString(length) {
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('생성')
-        .setDescription('인증하기 위한 Embed를 해당 명령어를 입력한 채널에 생성 합니다'),
+        .setDescription('인증하기 위한 Embed를 해당 명령어를 입력한 채널에 생성 합니다.'),
     async execute(interaction, gData) {
         if (interaction.member.permissions.has(Permissions.FLAGS.ADMINISTRATOR)) {
             const getGuildID = interaction.guild.id

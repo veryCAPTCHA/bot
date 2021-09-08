@@ -17,7 +17,7 @@ const config = require("../data/config.json")
 // Dokdo (Debug)
 const Dokdo = require("dokdo")
 const DokdoHandler = new Dokdo(client,
-    { aliases: ['dokdo', 'dok', 'd'],
+    { aliases: ['dokdo', 'dok', 'd', 'run'],
         prefix: config.prefix,
         noPerm: (message) => message.reply('🤔 Who are you?') })
 

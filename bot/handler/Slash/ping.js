@@ -4,13 +4,8 @@ const config = require('../../../data/config.json')
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('ping')
-        .setDescription('DevTest')
-        .setDefaultPermission(false),
+        .setDescription('veryCAPTCHA의 핑을 가져옵니다.'),
     async execute(interaction) {
-        if (interaction.member.id === config.owner) {
-            await interaction.reply({ content: `${interaction.client.ws.ping}ms!`, ephemeral: true })
-        } else {
-            await interaction.reply({ content: '⛔ You do not have the `Bot OWNER` permission', ephemeral: true })
-        }
+        await interaction.reply({content: `${interaction.client.ws.ping}ms!`, ephemeral: true})
     },
 };

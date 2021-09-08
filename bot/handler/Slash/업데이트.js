@@ -7,7 +7,7 @@ const config = require("../../../data/config.json")
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('업데이트')
-        .setDescription('인증하기 위한 Embed를 최신 데이터로 업데이트 됩니다'),
+        .setDescription('인증하기 위한 Embed를 최신 데이터로 업데이트 됩니다.'),
     async execute(interaction, gData) {
         if (interaction.member.permissions.has(Permissions.FLAGS.ADMINISTRATOR)) {
             const verify = new Discord.MessageEmbed()

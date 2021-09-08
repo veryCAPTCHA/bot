@@ -5,7 +5,7 @@ const data = require("../../captchaData")
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('삭제')
-        .setDescription('인증하기 위한 Embed를 삭제 합니다'),
+        .setDescription('인증하기 위한 Embed를 삭제 합니다.'),
     async execute(interaction, gData) {
         if (interaction.member.permissions.has(Permissions.FLAGS.ADMINISTRATOR)) {
             const getGuildID = interaction.guild.id
