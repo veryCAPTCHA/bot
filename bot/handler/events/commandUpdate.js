@@ -22,7 +22,7 @@ module.exports = {
             (async () => {
                 try {
                     await rest.put(
-                        Routes.applicationGuildCommands("859253614295646288", message.guild.id),
+                        Routes.applicationGuildCommands(message.client.user.id, message.guild.id),
                         { body: commands },
                     );
 
