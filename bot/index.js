@@ -1,15 +1,12 @@
 const fs = require('fs')
 const mongoose = require("mongoose")
-const { Collection, Intents, Permissions } = require('discord.js')
+const { Client, Collection, Intents, Permissions } = require('discord.js')
 const data = require("./captchaData")
-const { SapphireClient } = require('@sapphire/framework')
 
 // Json Files
 const config = require("../data/config.json")
 
-const client = new SapphireClient({
-    defaultPrefix: '/',
-    intents: [
+const client = new Client({ intents: [
     Intents.FLAGS.GUILDS,
     Intents.FLAGS.GUILD_MESSAGES,
     Intents.FLAGS.GUILD_INTEGRATIONS,
