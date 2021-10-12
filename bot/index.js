@@ -1,18 +1,21 @@
 const fs = require('fs')
 const mongoose = require("mongoose")
-const { Client, Collection, Intents, Permissions } = require('discord.js')
+const { Collection, Intents, Permissions } = require('discord.js')
 const data = require("./captchaData")
+const { SapphireClient } = require('@sapphire/framework')
 
-const client = new Client({ intents: [
+// Json Files
+const config = require("../data/config.json")
+
+const client = new SapphireClient({
+    defaultPrefix: '/',
+    intents: [
     Intents.FLAGS.GUILDS,
     Intents.FLAGS.GUILD_MESSAGES,
     Intents.FLAGS.GUILD_INTEGRATIONS,
     Intents.FLAGS.GUILD_MEMBERS,
     Intents.FLAGS.DIRECT_MESSAGES,
-    Intents.FLAGS.GUILD_MESSAGE_REACTIONS] });
-
-// Json Files
-const config = require("../data/config.json")
+    Intents.FLAGS.GUILD_MESSAGE_REACTIONS] })
 
 // Dokdo (Debug)
 const Dokdo = require("dokdo")
@@ -67,18 +70,5 @@ mongoose.connect(`${require("../data/mongo.json").DB}`, {
     useUnifiedTopology: true,
     useNewUrlParser: true,
 }).then(() => console.log('Connected to DB'));
-
-// let gData
-// try {
-//     gData = await data.findOne({ guildID: guild.id })
-//     if (!gData) {
-//         let gDataN = await data.create({
-//             guildID: guild.id
-//         })
-//         await gDataN.save()
-//     }
-// } catch (e) {
-//     console.log(e)
-// }
 
 client.login(config.token).then(undefined)
