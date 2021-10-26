@@ -1,3 +1,9 @@
+### 1.1.1 (v2)
+
+* PR : (master <- dev) [#3](https://github.com/Kill00/veryCAPTCHA/pull/3)
+
+---
+
 ### 1.1.0-dev (v2)
 
 * 코드 정리
