@@ -21,6 +21,7 @@ const DokdoHandler = new Dokdo(client,
         prefix: config.prefix,
         noPerm: (message) => message.reply('🤔 Who are you?') })
 
+// Legacy
 client.on('messageCreate', async message => {
     DokdoHandler.run(message)
 
