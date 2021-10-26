@@ -8,7 +8,6 @@ const guildData = new mongoose.Schema({
     buttonEmoji: {type: String, required: true, default: "✅"},
     buttonLabel: {type: String, required: true, default: "인증"},
     verifyStyle: {type: String, required: true, default: "v2"},
-    broadcastChannel: {type: String, required: true, default: "봇-공지"},
     createdChannelID: {type: String},
     createdMessageID: {type: String},
     customId: {type: String},
