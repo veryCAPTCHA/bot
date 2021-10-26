@@ -1,3 +1,25 @@
+### 1.1.1 (v2)
+
+* PR : (master <- dev) [#3](https://github.com/Kill00/veryCAPTCHA/pull/3)
+
+---
+
+### 1.1.0-dev (v2)
+
+* 코드 정리
+* 봇공지 개편
+* '공지사항' 명령어 추가
+* '채널설정' 명령어 제거
+
+---
+
+### 1.0.9-dev (v2)
+
+* 코드 정리
+* 'help' 명령어 비활성화
+
+---
+
 ### 1.0.8 (v2)
 
 * PR : (master <- dev) [#2](https://github.com/Kill00/veryCAPTCHA/pull/2)

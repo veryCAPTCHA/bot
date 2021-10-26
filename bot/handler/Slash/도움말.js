@@ -7,7 +7,8 @@ const config = require("../../../data/config.json")
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('도움말')
-        .setDescription('캡챠의 도움말을 가져옵니다.'),
+        .setDescription('캡챠의 도움말을 가져옵니다.')
+        .setDefaultPermission(false),
     async execute(interaction) {
         if (interaction.member.permissions.has(Permissions.FLAGS.ADMINISTRATOR)) {
             const help = new Discord.MessageEmbed()

@@ -29,7 +29,7 @@ module.exports = {
         await (async () => {
             try {
                 await rest.put(
-                    Routes.applicationGuildCommands("859253614295646288", guild.id),
+                    Routes.applicationGuildCommands(guild.client.user.id, guild.id),
                     {body: commands},
                 );
             } catch (error) {

@@ -1,6 +1,7 @@
 const fs = require('fs');
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
+const { Permissions } = require('discord.js')
 
 // Json Files
 const config = require("../../../data/config.json")
@@ -17,20 +18,39 @@ module.exports = {
     name: "messageCreate",
     execute(message) {
         if (message.content.startsWith("/갱신")) {
-            const rest = new REST({ version: '9' }).setToken(config.token);
+            if (message.member.permissions.has(Permissions.FLAGS.ADMINISTRATOR)) {
+                const rest = new REST({version: '9'}).setToken(config.token);
 
-            (async () => {
-                try {
-                    await rest.put(
-                        Routes.applicationGuildCommands("859253614295646288", message.guild.id),
-                        { body: commands },
-                    );
+                (async () => {
+                    try {
+                        await rest.put(
+                            Routes.applicationGuildCommands(message.client.user.id, message.guild.id),
+                            {body: commands},
+                        );
 
-                    await message.reply({content: "업데이트 완료!"});
-                } catch (error) {
-                    console.error(error);
-                }
-            })();
+                        await message.reply({content: "업데이트 완료!"});
+                    } catch (error) {
+                        console.error(error);
+                    }
+                })();
+            }
+        }
+
+        if (message.content.startsWith("/ForceUpdateCommand")) {
+            if (message.author.id === config.owner) {
+                const rest = new REST({version: '9'}).setToken(config.token);
+
+                message.client.guilds.cache.each(async guild => {
+                    try {
+                        await rest.put(
+                            Routes.applicationGuildCommands(message.client.user.id, guild.id),
+                            {body: commands},
+                        );
+                    } catch (error) {
+                        console.error(error);
+                    }
+                })
+            }
         }
     }
 }
