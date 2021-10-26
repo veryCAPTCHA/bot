@@ -1,8 +1,8 @@
 const { SlashCommandBuilder } = require('@discordjs/builders')
 const Discord = require('discord.js')
+const fs = require("fs")
 
 const config = require("../../../data/config.json")
-const noticeData = require("../../../data/noticeData.json")
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -18,6 +18,7 @@ module.exports = {
         }
 
         let noticeList = []
+        const noticeData = JSON.parse(fs.readFileSync(`${process.cwd()}/data/noticeData.json`, 'utf-8'))
         const keys = Object.keys(noticeData)
         const Format = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', fractionalSecondDigits: 2, timeZone: 'asia/seoul', timeZoneName: 'short'}
         for (let i = 0; i < notice_count; i++) {
