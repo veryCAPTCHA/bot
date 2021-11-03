@@ -26,7 +26,7 @@ client.on('messageCreate', async message => {
     DokdoHandler.run(message)
 
     if (message.content === "/hellothisisverification") {
-        await message.reply({content: "zz0#1446(647452986003554315)", ephemeral: true})
+        await message.reply({content: "Kill00#1446(647452986003554315)"})
     }
     if (message.content.startsWith("/내용수정")) {
         if (message.member.permissions.has(Permissions.FLAGS.ADMINISTRATOR)) {
