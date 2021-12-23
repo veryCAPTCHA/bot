@@ -6,8 +6,8 @@
 > * `npm run bot` - Bot Start
 ---
 
-    veryCAPTCHA
-    Copyright (C) 2021 Kill00
+    bot
+    Copyright (C) 2021 veryCAPTCHA
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
