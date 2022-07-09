@@ -15,5 +15,6 @@ const guildData = new mongoose.Schema({
 })
 
 const data = mongoose.model("captchaData", guildData)
+// const data = mongoose.model("test", guildData)
 
 module.exports = data

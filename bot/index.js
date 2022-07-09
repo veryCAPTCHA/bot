@@ -60,9 +60,13 @@ for (const file of eventFiles) {
     }
 }
 
-mongoose.connect(`${require("../data/mongo.json").DB}`, {
-    useUnifiedTopology: true,
-    useNewUrlParser: true,
-}).then(() => console.log('Connected to DB'));
+mongoose.connect(`${require("../data/mongo.json").DB}`).then(undefined)
+
+const db = mongoose.connection;
+
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', () => {
+    console.log("Connected to MongoDB");
+});
 
 client.login(config.token).then(undefined)
